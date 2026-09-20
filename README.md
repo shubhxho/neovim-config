@@ -10,7 +10,7 @@ the terminal.
 # backup anything already there
 mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null || true
 
-git clone <this-repo> ~/.config/nvim
+git clone https://github.com/shubhxho/neovim-config.git ~/.config/nvim
 nvim
 ```
 
