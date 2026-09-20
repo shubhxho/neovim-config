@@ -32,6 +32,11 @@ return {
       terminal = { enabled = true },
       words = { enabled = true },
       zen = { enabled = true },
+      image = { enabled = true },
+      dim = { enabled = true },
+      git = { enabled = true },
+      profiler = { enabled = true },
+      animate = { enabled = true },
     },
     keys = {
       { "<leader><space>", function() Snacks.picker.files() end, desc = "Files" },
@@ -63,6 +68,8 @@ return {
       { "<c-_>", function() Snacks.terminal() end, desc = "Terminal", mode = { "n", "t" } },
       { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next reference" },
       { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev reference" },
+      { "<leader>up", function() Snacks.profiler.toggle() end, desc = "Profiler" },
+      { "<leader>uP", function() Snacks.profiler.scratch() end, desc = "Profiler scratch" },
     },
   },
 }

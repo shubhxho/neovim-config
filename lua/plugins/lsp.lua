@@ -43,6 +43,32 @@ return {
             Snacks.rename.rename_file()
           end, "Rename file")
           pcall(vim.lsp.inlay_hint.enable, true, { bufnr = buf })
+          pcall(vim.lsp.codelens.refresh)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if not client then
+            return
+          end
+          if client:supports_method("textDocument/inlineCompletion") then
+            pcall(vim.lsp.inline_completion.enable, true, { bufnr = buf, client_id = client.id })
+          end
+          if client:supports_method("textDocument/onTypeFormatting") then
+            pcall(vim.lsp.on_type_formatting.enable, true, { bufnr = buf, client_id = client.id })
+          end
+          if client:supports_method("textDocument/linkedEditingRange") then
+            pcall(vim.lsp.linked_editing_range.enable, true, { bufnr = buf, client_id = client.id })
+          end
+          if client:supports_method("textDocument/documentColor") then
+            pcall(function()
+              vim.lsp.document_color.enable(true, buf)
+            end)
+          end
+          if client:supports_method("textDocument/codeLens") then
+            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+              buffer = buf,
+              callback = vim.lsp.codelens.refresh,
+            })
+            vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, { buffer = buf, desc = "Code lens" })
+          end
         end,
       })
     end,
@@ -61,7 +87,7 @@ return {
     },
     opts = {
       automatic_enable = {
-        exclude = { "rust_analyzer", "ts_ls" },
+        exclude = { "rust_analyzer", "ts_ls", "pyright" },
       },
     },
   },
@@ -76,8 +102,10 @@ return {
         "gofumpt",
         "goimports",
         "golangci-lint",
-        "pyright",
         "ruff",
+        "ty",
+        "copilot-language-server",
+        "ast-grep",
         "ts_ls",
         "eslint-lsp",
         "prettier",

@@ -1,8 +1,8 @@
 # neovim-config
 
-A complete Neovim **0.12+** config. Native LSP (`vim.lsp.config` / `vim.lsp.enable`),
-treesitter `main`, Rust-backed blink.cmp, and Snacks for pickers, explorer, and
-the terminal.
+A complete Neovim **0.12+** config. Native LSP 3.18 features (inline completion,
+on-type format, linked edits, document color, code lens), treesitter `main`,
+Rust blink.cmp, and Snacks (picker, explorer, image, profiler).
 
 ## Install
 
@@ -36,12 +36,15 @@ Requires **Neovim 0.12 or later**. This machine already has 0.12.5.
 | LSP | mason, mason-lspconfig `automatic_enable`, nvim-lspconfig, lazydev, aerial |
 | Rust | rustaceanvim (not mason rust-analyzer) |
 | TypeScript | typescript-tools (ts_ls excluded from auto-enable) |
-| Completion | blink.cmp + blink.lib + copilot via blink-copilot |
-| Format / lint | conform.nvim, nvim-lint |
-| Git | gitsigns, neogit, diffview, git-conflict, lazygit |
+| Completion | blink.cmp + blink.lib + lazydev; native `vim.lsp.inline_completion` |
+| Python | Astral **ty** + **ruff** (pyright left off auto-enable) |
+| Format / lint | conform.nvim, nvim-lint, LSP on-type formatting |
+| Git | gitsigns, neogit, diffview, git-conflict, lazygit, `:DiffTool` |
 | Debug | nvim-dap, dap-ui, mason-nvim-dap, dap-go, dap-python |
 | Test | neotest (python, go, rust, jest), overseer |
-| AI | copilot.lua, codecompanion |
+| Extra | ts-comments, quicker, rainbow-delimiters, otter, sidekick |
+| AI | copilot-language-server (native ghost text), codecompanion |
+| Builtins | `:Undotree`, `:DiffTool` via `packadd` |
 
 Language defaults live in `lsp/*.lua` and are consumed by Neovim 0.11+ natively.
 
@@ -55,7 +58,9 @@ Language defaults live in `lsp/*.lua` and are consumed by Neovim 0.11+ natively.
 | `<leader>gg` | Lazygit |
 | `gd` `grr` `gra` `grn` | LSP (native + picker) |
 | `<leader>cf` | Format |
+| `<C-l>` (insert) | Accept native inline completion |
 | `<leader>aa` | AI actions |
+| `<leader>uu` | Undotree |
 | `<c-/>` | Terminal |
 | `<leader>L` | Lazy |
 | `<leader>cm` | Mason |

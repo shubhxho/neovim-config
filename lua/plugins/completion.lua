@@ -4,7 +4,6 @@ return {
     dependencies = {
       "saghen/blink.lib",
       "rafamadriz/friendly-snippets",
-      "fang2hou/blink-copilot",
     },
     event = "InsertEnter",
     build = function()
@@ -20,13 +19,12 @@ return {
       },
       signature = { enabled = true },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        default = { "lsp", "path", "snippets", "buffer", "lazydev" },
         providers = {
-          copilot = {
-            name = "copilot",
-            module = "blink-copilot",
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
             score_offset = 100,
-            async = true,
           },
         },
       },
