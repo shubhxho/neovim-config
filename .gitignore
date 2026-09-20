@@ -1,0 +1,7 @@
+.luarc.json
+*.log
+.DS_Store
+lazy-lock.json.bak
+spell/
+.netrwhist
+plugin/packer_compiled.lua
