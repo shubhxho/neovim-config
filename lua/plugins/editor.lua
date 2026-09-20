@@ -9,13 +9,13 @@ return {
       require("mini.comment").setup()
       require("mini.files").setup()
       require("mini.icons").setup()
+      require("mini.icons").mock_nvim_web_devicons()
       require("mini.move").setup()
       require("mini.operators").setup()
       require("mini.pairs").setup()
       require("mini.splitjoin").setup()
       require("mini.surround").setup()
       require("mini.trailspace").setup()
-      require("mini.icons").mock_nvim_web_devicons()
       require("mini.statusline").setup({ use_icons = true })
       vim.o.laststatus = 3
     end,

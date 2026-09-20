@@ -1,80 +1,67 @@
 # neovim-config
 
-A complete Neovim **0.12+** config. Native LSP 3.18 features (inline completion,
-on-type format, linked edits, document color, code lens), treesitter `main`,
-Rust blink.cmp, and Snacks (picker, explorer, image, profiler).
+Neovim **0.12+** config. Native LSP 3.18, treesitter `main`, blink.cmp, Snacks.
+
+Repo: https://github.com/shubhxho/neovim-config
 
 ## Install
 
 ```bash
-# backup anything already there
 mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null || true
-
 git clone https://github.com/shubhxho/neovim-config.git ~/.config/nvim
+brew install neovim ripgrep fd tree-sitter lazygit yazi ffmpeg imagemagick
 nvim
 ```
 
-First launch clones lazy.nvim, installs plugins, builds blink’s fuzzy matcher,
-and Mason pulls language servers. That needs network, a C compiler, Rust
-(`rustup`) for blink, and `tree-sitter` CLI ≥ 0.26.1 (`brew install tree-sitter`).
-
-```bash
-brew install neovim ripgrep fd tree-sitter lazygit yazi ffmpeg imagemagick
-```
-
-Requires **Neovim 0.12 or later**. This machine already has 0.12.5.
+First launch installs plugins, builds blink’s Rust matcher, and Mason pulls
+servers. You need git, a C compiler, `rustup`, and `tree-sitter` ≥ 0.26.1.
 
 ## Stack
 
-| Layer | Plugin |
+| Area | What |
 |---|---|
-| Manager | lazy.nvim |
 | UI | catppuccin, mini.statusline, dropbar, which-key, ufo, trouble |
-| Navigation | snacks.nvim (picker, explorer, terminal, zen, image, profiler) |
-| Edit | mini.nvim, oil, yazi, flash, yanky, grug-far, persistence |
-| Treesitter | nvim-treesitter **main**, context, textobjects |
-| LSP | mason + `automatic_enable`, nvim-lspconfig, lazydev (no fidget/aerial) |
-| Rust | rustaceanvim + its neotest adapter |
-| TypeScript | **vtsls** + nvim-vtsls + ts-error-translator |
-| Completion | blink.cmp + blink.lib + lazydev; native `vim.lsp.inline_completion` |
-| Python | Astral **ty** + **ruff** (pyright left off auto-enable) |
-| Format / lint | conform.nvim, nvim-lint, LSP on-type formatting |
-| Git | gitsigns, neogit, diffview, git-conflict, lazygit, `:DiffTool` |
-| Debug | nvim-dap, dap-ui, mason-nvim-dap, dap-go, dap-python |
-| Test | neotest (python, go, rust, jest), overseer |
-| Extra | ts-comments, quicker, rainbow-delimiters, otter, sidekick |
-| AI | copilot-language-server (native ghost text), codecompanion |
-| Builtins | `:Undotree`, `:DiffTool` via `packadd` |
+| Find | snacks picker / explorer / terminal / image / profiler |
+| Edit | mini.nvim, oil, yazi, flash, yanky, grug-far |
+| Treesitter | nvim-treesitter **main** |
+| LSP | mason `automatic_enable`, `lsp/*.lua` |
+| Rust | rustaceanvim |
+| TypeScript | vtsls + nvim-vtsls |
+| Python | ty + ruff |
+| Complete | blink.cmp + native inline (`<C-l>`) |
+| Format | conform + on-type format |
+| Git | gitsigns, neogit, `:DiffTool` |
+| Debug / test | nvim-dap, neotest, overseer |
+| AI | copilot-language-server, codecompanion, sidekick |
 
-Language defaults live in `lsp/*.lua` and are consumed by Neovim 0.11+ natively.
+## Keys
 
-## Keys (leader is space)
+Leader is space. Press it and wait for which-key.
 
 | Key | Action |
 |---|---|
-| `<space><space>` / `<leader>ff` | Files |
+| `<space><space>` | Files |
 | `<leader>/` | Grep |
 | `<leader>e` | Explorer |
 | `<leader>fy` | Yazi |
 | `<leader>gg` | Lazygit |
-| `gd` `grr` `gra` `grn` | LSP (native + picker) |
+| `gd` `grr` `gra` `grn` | LSP |
 | `<leader>cf` | Format |
-| `<C-l>` (insert) | Accept native inline completion |
+| `<C-l>` | Accept inline completion |
 | `<leader>aa` | AI actions |
+| `<leader>as` | Sidekick CLI |
 | `<leader>uu` | Undotree |
 | `<c-/>` | Terminal |
 | `<leader>L` | Lazy |
 | `<leader>cm` | Mason |
 
-Press space and wait for which-key.
-
 ## Layout
 
 ```
 init.lua
-lua/config/     options, keymaps, autocmds, lazy bootstrap
-lua/plugins/    one file per concern
-lsp/            native server settings
+lua/config/    options, maps, autocmds, 0.12 builtins
+lua/plugins/   one file per concern
+lsp/           native server settings
 ```
 
 ## Update
