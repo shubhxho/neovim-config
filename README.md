@@ -9,12 +9,13 @@ Repo: https://github.com/shubhxho/neovim-config
 ```bash
 mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null || true
 git clone https://github.com/shubhxho/neovim-config.git ~/.config/nvim
-brew install neovim ripgrep fd tree-sitter lazygit yazi ffmpeg imagemagick
+brew install neovim ripgrep fd tree-sitter-cli lazygit yazi ffmpeg imagemagick
 nvim
 ```
 
 First launch installs plugins, builds blink’s Rust matcher, and Mason pulls
-servers. You need git, a C compiler, `rustup`, and `tree-sitter` ≥ 0.26.1.
+servers. You need git, a C compiler, `rustup`, and **`tree-sitter-cli` ≥ 0.26.1**.
+Homebrew’s `tree-sitter` formula is only the library; parsers need the CLI.
 
 ## Stack
 

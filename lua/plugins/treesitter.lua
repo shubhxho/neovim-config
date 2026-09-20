@@ -59,6 +59,15 @@ return {
       require("nvim-treesitter").setup({
         install_dir = vim.fn.stdpath("data") .. "/site",
       })
+      -- nvim-treesitter main runs `tree-sitter build`. Homebrew's `tree-sitter`
+      -- formula is only the library; the CLI is `tree-sitter-cli`.
+      if vim.fn.executable("tree-sitter") == 0 then
+        vim.notify(
+          "tree-sitter CLI missing. Install it, then :TSUpdate\n  brew install tree-sitter-cli",
+          vim.log.levels.WARN
+        )
+        return
+      end
       require("nvim-treesitter").install(langs)
     end,
   },
