@@ -87,7 +87,7 @@ return {
     },
     opts = {
       automatic_enable = {
-        exclude = { "rust_analyzer", "ts_ls", "pyright" },
+        exclude = { "rust_analyzer", "ts_ls", "typescript-language-server", "pyright" },
       },
     },
   },
@@ -106,7 +106,7 @@ return {
         "ty",
         "copilot-language-server",
         "ast-grep",
-        "ts_ls",
+        "vtsls",
         "eslint-lsp",
         "prettier",
         "jsonls",
@@ -137,14 +137,5 @@ return {
         { path = "lazy.nvim", words = { "LazyVim" } },
       },
     },
-  },
-  {
-    "j-hui/fidget.nvim",
-    opts = {},
-  },
-  {
-    "stevearc/aerial.nvim",
-    opts = { backends = { "lsp", "treesitter", "markdown" }, layout = { default_direction = "prefer_right" } },
-    keys = { { "<leader>co", "<cmd>AerialToggle<cr>", desc = "Outline" } },
   },
 }

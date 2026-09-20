@@ -15,6 +15,9 @@ return {
       require("mini.splitjoin").setup()
       require("mini.surround").setup()
       require("mini.trailspace").setup()
+      require("mini.icons").mock_nvim_web_devicons()
+      require("mini.statusline").setup({ use_icons = true })
+      vim.o.laststatus = 3
     end,
     keys = {
       {
@@ -30,6 +33,15 @@ return {
     "stevearc/oil.nvim",
     opts = { view_options = { show_hidden = true }, default_file_explorer = false },
     keys = { { "-", "<cmd>Oil<cr>", desc = "Oil" } },
+  },
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>fy", "<cmd>Yazi<cr>", desc = "Yazi" },
+      { "<leader>fY", "<cmd>Yazi cwd<cr>", desc = "Yazi (cwd)" },
+    },
+    opts = { open_for_directories = false },
   },
   {
     "folke/flash.nvim",

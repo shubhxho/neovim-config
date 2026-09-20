@@ -19,7 +19,7 @@ and Mason pulls language servers. That needs network, a C compiler, Rust
 (`rustup`) for blink, and `tree-sitter` CLI ≥ 0.26.1 (`brew install tree-sitter`).
 
 ```bash
-brew install neovim ripgrep fd tree-sitter lazygit
+brew install neovim ripgrep fd tree-sitter lazygit yazi ffmpeg imagemagick
 ```
 
 Requires **Neovim 0.12 or later**. This machine already has 0.12.5.
@@ -29,13 +29,13 @@ Requires **Neovim 0.12 or later**. This machine already has 0.12.5.
 | Layer | Plugin |
 |---|---|
 | Manager | lazy.nvim |
-| UI | catppuccin, lualine, noice, which-key, ufo, trouble |
-| Navigation | snacks.nvim (picker, explorer, terminal, zen, dashboard) |
-| Edit | mini.nvim, oil, flash, yanky, grug-far, persistence |
+| UI | catppuccin, mini.statusline, dropbar, which-key, ufo, trouble |
+| Navigation | snacks.nvim (picker, explorer, terminal, zen, image, profiler) |
+| Edit | mini.nvim, oil, yazi, flash, yanky, grug-far, persistence |
 | Treesitter | nvim-treesitter **main**, context, textobjects |
-| LSP | mason, mason-lspconfig `automatic_enable`, nvim-lspconfig, lazydev, aerial |
-| Rust | rustaceanvim (not mason rust-analyzer) |
-| TypeScript | typescript-tools (ts_ls excluded from auto-enable) |
+| LSP | mason + `automatic_enable`, nvim-lspconfig, lazydev (no fidget/aerial) |
+| Rust | rustaceanvim + its neotest adapter |
+| TypeScript | **vtsls** + nvim-vtsls + ts-error-translator |
 | Completion | blink.cmp + blink.lib + lazydev; native `vim.lsp.inline_completion` |
 | Python | Astral **ty** + **ruff** (pyright left off auto-enable) |
 | Format / lint | conform.nvim, nvim-lint, LSP on-type formatting |
@@ -55,6 +55,7 @@ Language defaults live in `lsp/*.lua` and are consumed by Neovim 0.11+ natively.
 | `<space><space>` / `<leader>ff` | Files |
 | `<leader>/` | Grep |
 | `<leader>e` | Explorer |
+| `<leader>fy` | Yazi |
 | `<leader>gg` | Lazygit |
 | `gd` `grr` `gra` `grn` | LSP (native + picker) |
 | `<leader>cf` | Format |

@@ -7,8 +7,8 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-go",
-      "rouge8/neotest-rust",
       "nvim-neotest/neotest-jest",
+      "mrcjkb/rustaceanvim",
     },
     keys = {
       { "<leader>tt", function() require("neotest").run.run() end, desc = "Nearest test" },
@@ -22,7 +22,7 @@ return {
         adapters = {
           require("neotest-python")({ runner = "pytest" }),
           require("neotest-go"),
-          require("neotest-rust"),
+          require("rustaceanvim.neotest"),
           require("neotest-jest")({
             jestCommand = "npm test --",
             cwd = function()

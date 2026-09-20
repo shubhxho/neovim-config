@@ -57,7 +57,7 @@ o.grepprg = "rg --vimgrep --smart-case --hidden --glob !.git"
 o.grepformat = "%f:%l:%c:%m"
 
 vim.opt.shortmess:append("IWcC")
-vim.opt.diffopt:append("linematch:60,algorithm:histogram")
+vim.opt.diffopt:append("linematch:60,algorithm:histogram,indent-heuristic,inline:char")
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 
 vim.diagnostic.config({
